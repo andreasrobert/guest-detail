@@ -4,10 +4,10 @@ import asyncComponent from '../../helpers/AsyncFunc';
 import customRoutes from '../../customApp/router';
 
 const routes = [
-  {
-    path: '',
-    component: asyncComponent(() => import('../Widgets/index.js')),
-  },
+  // {
+  //   path: '',
+  //   component: asyncComponent(() => import('../Widgets/index.js')),
+  // },
   {
     path: 'inbox',
     component: asyncComponent(() => import('../Mail')),
