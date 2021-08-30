@@ -12,7 +12,7 @@ import appActions from "../../redux/app/actions";
 import Logo from "../../components/utility/logo";
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+// const MenuItemGroup = Menu.ItemGroup;
 const { Sider } = Layout;
 
 const {
