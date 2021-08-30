@@ -641,5 +641,15 @@
   "topbar.logout": "Disconnettersi",
   "topbar.viewAll": "Guarda tutto",
   "topbar.viewCart": "Visualizza carrello",
-  "topbar.totalPrice": "Prezzo totale"
+  "topbar.totalPrice": "Prezzo totale",
+  "sidebar.guestdetails": "Portale Ospiti",
+  "guestdetails.header": "Dettagli della prenotazione",
+  "guestdetails.askbookingcode": "Il tuo codice di prenotazione",
+  "guestdetails.introduction": 
+  "Grazie per aver prenotato con Bukit Vista. Ecco i dettagli della tua prenotazione attuale:",
+  "guestdetails.property": "Nome della proprietà",
+  "guestdetails.checkin": "Data di arrivo",
+  "guestdetails.checkout": "Data di partenza",
+  "guestdetails.arrival": "Orario di arrivo",
+  "forms.formsWithValidation.bookcodewarning":"Il codice di prenotazione non esiste"
 }

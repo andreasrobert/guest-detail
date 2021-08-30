@@ -593,5 +593,15 @@
   "topbar.logout": "登出",
   "topbar.viewAll": "查看全部",
   "topbar.viewCart": "查看购物车",
-  "topbar.totalPrice": "总价格"
+  "topbar.totalPrice": "总价格",
+  "sidebar.guestdetails": "访客门户",
+  "guestdetails.header": "预订详情",
+  "guestdetails.askbookingcode": "您的预订代码",
+  "guestdetails.introduction": 
+  "感谢您预订 Bukit Vista。以下是您当前预订的详细信息：",
+  "guestdetails.property": "物业名称",
+  "guestdetails.checkin": "入住日期",
+  "guestdetails.checkout": "离开日期",
+  "guestdetails.arrival": "到达时间",
+  "forms.formsWithValidation.bookcodewarning":"预订代码不存在"
 }

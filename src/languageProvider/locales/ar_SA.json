@@ -610,5 +610,15 @@
   "email.noMessage": "الرجاء تحديد بريد للقراءة",
   "themeSwitcher.purchase": "شراء الآن",
   "themeSwitcher.settings": "إعدادات",
-  "sidebar.selectbox": "تحديد"
+  "sidebar.selectbox": "تحديد",
+  "sidebar.guestdetails": "بوابة الضيف",
+  "guestdetails.header": "تفاصيل الحجز",
+  "guestdetails.askbookingcode": "رمز الحجز الخاص بك",
+  "guestdetails.introduction": 
+  "شكرا لك على الحجز مع بوكيت فيستا. فيما يلي تفاصيل حجزك الحالي:",
+  "guestdetails.property": "خاصية",
+  "guestdetails.checkin": "تحقق في",
+  "guestdetails.checkout": "الدفع",
+  "guestdetails.arrival": "وصول",
+  "forms.formsWithValidation.bookcodewarning":"رمز الحجز غير موجود"
 }

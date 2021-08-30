@@ -651,5 +651,15 @@
   "topbar.logout": "Cerrar sesión",
   "topbar.viewAll": "Ver todo",
   "topbar.viewCart": "Ver carro",
-  "topbar.totalPrice": "Precio total"
+  "topbar.totalPrice": "Precio total",
+  "sidebar.guestdetails": "Portal de invitados",
+  "guestdetails.header": "Detalles de la reserva",
+  "guestdetails.askbookingcode": "Tu código de reserva",
+  "guestdetails.introduction": 
+  "Gracias por reservar con Bukit Vista. Aquí están los detalles de su reserva actual:",
+  "guestdetails.property": "Propiedad",
+  "guestdetails.checkin": "Registrarse",
+  "guestdetails.checkout": "Verificar",
+  "guestdetails.arrival": "Llegada",
+  "forms.formsWithValidation.bookcodewarning":"El código de reserva no existe"
 }
