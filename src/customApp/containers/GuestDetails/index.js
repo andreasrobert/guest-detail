@@ -12,7 +12,7 @@ import Input2 from '../../../components/uielements/input'
 import IntlMessages from '../../../components/utility/intlMessages';
 import { connect } from "react-redux";
 
-const { getGuest, getAllGuest, updateGuest, setStatus} = actions;
+const { getGuest, updateGuest, setStatus} = actions;
 const FormItem = Form.Item;
 
 class GuestPortal extends Component {
@@ -80,11 +80,9 @@ class GuestPortal extends Component {
   }
 
 
-
-
   render() {
-    const { input, time, timeInput, isOpen } = this.state
-    const { getGuest, guestData, isError } = this.props
+    const { input, time, isOpen } = this.state
+    const { guestData, isError } = this.props
     // console.log(guestData)
     // console.log(timeInput)
 
@@ -96,23 +94,26 @@ class GuestPortal extends Component {
     // console.log(parsedData)
 
     const title = ["Booking code","Name", "Property name", "Check in date", "Check out date", "Arrival time", "Profile"]
+    const keys = ["property_name", "check_in_date", "check_out_date", "arrival_time"]
+
+    // const fake = {"booking_code":"HIJ12345","guest_name":"Violet Well","property_name":"Canggu Villa","check_in_date":"26 April 2021","check_out_date":"30 April 2021","arrival_time":"","profile_picture":"https://picsum.photos/200/300?random=1"}
 
     return (
       <LayoutWrapper>
         <PageHeader >
-          Booking Details
+          <IntlMessages id="guestdetails.header" />
         </PageHeader>
       <LayoutContentWrapper style={{ minHeight: "80vh", width:"100%", marginTop:"-40px" }}>
         <LayoutContent >
-          <h2>Your booking code</h2>
+          <h2><IntlMessages id="guestdetails.askbookingcode" /></h2>
           <Form onSubmit={this.handleSubmit}>
           <FormItem
           hasFeedback
           validateStatus={isError}
-          help={isError==="error"? <IntlMessages id="forms.formsWithValidation.failHelp" /> : isError==="warning"? "Booking code doen't exist" : "" }
+          help={isError==="error"? <IntlMessages id="forms.formsWithValidation.failHelp" /> : isError==="warning"? <IntlMessages id="forms.formsWithValidation.bookcodewarning"/> : "" }
           >
           {/* <input value={this.state.input} onChange={this.handleChange}></input> */}
-          <Input2 style={{maxWidth:"150px"}} placeholder="KJSH87HGDK" value={this.state.input} onChange={this.handleChange}></Input2>
+          <Input2 style={{maxWidth:"150px"}} placeholder="KJSH87HGDK" value={input} onChange={this.handleChange}></Input2>
           </FormItem>
           </Form>
 
@@ -126,9 +127,9 @@ class GuestPortal extends Component {
             <h1 className="isoPersonName">Hi, {guestData.guest_name}!</h1>
             </div>
             <div className="isoContactInfoWrapper">
-              <p>Thank you for booking with Bukit Vista. Here are the details of your current booking:</p>
+              <p><IntlMessages id="guestdetails.introduction" /></p>
            {parsedData.map((attr, index) =>{
-             if(index>=2 && index<=5){
+             if(keys.includes(attr.key)){
               return(
                 <div className="isoContactCardInfos" key={attr.key}>
                   <p className="isoInfoLabel" style={{ minWidth: "110px" }}>{`${title[index]}`}</p>
@@ -140,6 +141,7 @@ class GuestPortal extends Component {
                 </div>
               )
              }
+             return <div key={attr.key}></div>;
              
            })}
            
