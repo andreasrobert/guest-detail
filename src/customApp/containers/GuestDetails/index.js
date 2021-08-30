@@ -1,10 +1,10 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import LayoutContentWrapper from "../../../components/utility/layoutWrapper.js";
 import LayoutContent from "../../../components/utility/layoutContent";
-import   {InputSearch}  from '../../../components/uielements/input';
+// import   {InputSearch}  from '../../../components/uielements/input';
 import { ContactCardWrapper } from '../../../components/contacts/contactCard.style';
 import actions from '../../redux/guestDetails/actions';
-import { TimePicker } from 'antd';
+import { TimePicker, Button } from 'antd';
 import PageHeader from '../../../components/utility/pageHeader'
 import LayoutWrapper from '../../../components/utility/layoutWrapper.js'
 import Form from '../../../components/uielements/form'
@@ -20,10 +20,27 @@ class GuestPortal extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleOpenChange = this.handleOpenChange.bind(this);
+    this.handleTime = this.handleTime.bind(this);
+
     this.state = {
-      input:""
+      input:"",
+      time: null,
+      timeInput: "",
+      isOpen: false
     }
   }
+
+  async handleOpenChange(){
+    const {isOpen, timeInput} = this.state
+    await this.setState({isOpen: !isOpen})
+    if(isOpen && timeInput!==""){
+      this.handleUpdate();
+    }
+
+  }
+
 
   async handleChange(event) {
     event.preventDefault();
@@ -31,11 +48,17 @@ class GuestPortal extends Component {
       input: event.target.value.toUpperCase().replace(/\s/g, ''),
     })
     if(!/^[A-Z0-9]+$/i.test(this.state.input)) {
-      console.log("shshshshhsh", this.state.input)
       this.props.setStatus("error")
     }else{
       this.props.setStatus(undefined)
     }
+  }
+  
+  handleTime(time,timeString){
+    this.setState({
+      time: time,
+      timeInput: timeString
+    })
   }
 
   handleSubmit (event) {
@@ -46,17 +69,24 @@ class GuestPortal extends Component {
       this.props.setStatus("error")
       return
     }
-
     this.props.getGuest(input)
+  }
 
+  handleUpdate(){
+    this.props.updateGuest({
+      bookingCode: this.props.guestData.booking_code,
+      updatedData: this.state.timeInput
+    })
   }
 
 
+
+
   render() {
-    const { input } = this.state
+    const { input, time, timeInput, isOpen } = this.state
     const { getGuest, guestData, isError } = this.props
-    console.log(guestData)
-    // console.log(input)
+    // console.log(guestData)
+    // console.log(timeInput)
 
     const parsedData = Object.keys(guestData).map(key => {
       const value = guestData[key];
@@ -102,7 +132,11 @@ class GuestPortal extends Component {
               return(
                 <div className="isoContactCardInfos" key={attr.key}>
                   <p className="isoInfoLabel" style={{ minWidth: "110px" }}>{`${title[index]}`}</p>
-                  <p className="isoInfoDetails">{`${attr.value}`}{attr.key==="arrival_time"? <TimePicker format={'HH:mm'} />:"" }</p>
+                  <p className="isoInfoDetails">{`${attr.value}`}{attr.key==="arrival_time"? <TimePicker value={time} onChange={this.handleTime} onOpenChange={this.handleOpenChange} open={isOpen} format={'HH:mm'} addon={() => (
+                    <Button size="small" type="primary" onClick={this.handleOpenChange}>
+                      Ok
+                    </Button> 
+                  )}/>:"" }</p>
                 </div>
               )
              }
@@ -112,7 +146,7 @@ class GuestPortal extends Component {
            </div>
            </ContactCardWrapper>
            </>
-           : <div>nothing here, try HIJ12345</div>}
+           : <div>nothing here, try HIJ12346</div>}
 
         </LayoutContent>
       </LayoutContentWrapper>
@@ -126,7 +160,7 @@ function mapStateToProps(state){
 
 export default connect(
   mapStateToProps,
-  { setStatus, getGuest }
+  { setStatus, getGuest, updateGuest }
 )(GuestPortal)
 
 
