@@ -11,6 +11,7 @@ import Form from '../../../components/uielements/form'
 import Input2 from '../../../components/uielements/input'
 import IntlMessages from '../../../components/utility/intlMessages';
 import { connect } from "react-redux";
+import GuestInfo from '../../components/guestInfo'
 
 const { getGuest, updateGuest, setStatus} = actions;
 const FormItem = Form.Item;
@@ -72,22 +73,24 @@ class GuestPortal extends Component {
     this.props.getGuest(input)
   }
 
-  handleUpdate(){
+  handleUpdate(time){
     this.props.updateGuest({
       bookingCode: this.props.guestData.booking_code,
-      updatedData: this.state.timeInput
+      updatedData: time
     })
   }
 
 
   render() {
+    const fake = {"booking_code":"HIJ12345","guest_name":"Violet Well","property_name":"Canggu Villa","check_in_date":"26 April 2021","check_out_date":"30 April 2021","arrival_time":"","profile_picture":"https://picsum.photos/200/300?random=1"}
+
     const { input, time, isOpen } = this.state
     const { guestData, isError } = this.props
     // console.log(guestData)
     // console.log(timeInput)
 
-    const parsedData = Object.keys(guestData).map(key => {
-      const value = guestData[key];
+    const parsedData = Object.keys(fake).map(key => {
+      const value = fake[key];
       return { key, value };
     })
 
@@ -96,7 +99,6 @@ class GuestPortal extends Component {
     const title = ["Booking code","Name", "Property name", "Check in date", "Check out date", "Arrival time", "Profile"]
     const keys = ["property_name", "check_in_date", "check_out_date", "arrival_time"]
 
-    // const fake = {"booking_code":"HIJ12345","guest_name":"Violet Well","property_name":"Canggu Villa","check_in_date":"26 April 2021","check_out_date":"30 April 2021","arrival_time":"","profile_picture":"https://picsum.photos/200/300?random=1"}
 
     return (
       <LayoutWrapper>
@@ -117,37 +119,38 @@ class GuestPortal extends Component {
           </FormItem>
           </Form>
 
-          {guestData.booking_code?
-          <>
-           <ContactCardWrapper className="isoContactCard">
-            <div className="isoContactCardHead">
-            <div className="isoPersonImage">
-            <img alt="#" src={guestData.profile_picture} /> 
-            </div>
-            <h1 className="isoPersonName">Hi, {guestData.guest_name}!</h1>
-            </div>
-            <div className="isoContactInfoWrapper">
-              <p><IntlMessages id="guestdetails.introduction" /></p>
-           {parsedData.map((attr, index) =>{
-             if(keys.includes(attr.key)){
-              return(
-                <div className="isoContactCardInfos" key={attr.key}>
-                  <p className="isoInfoLabel" style={{ minWidth: "110px" }}>{`${title[index]}`}</p>
-                  <p className="isoInfoDetails">{`${attr.value}`}{attr.key==="arrival_time"? <TimePicker value={time} onChange={this.handleTime} onOpenChange={this.handleOpenChange} open={isOpen} format={'HH:mm'} addon={() => (
-                    <Button size="small" type="primary" onClick={this.handleOpenChange}>
-                      Ok
-                    </Button> 
-                  )}/>:"" }</p>
-                </div>
-              )
-             }
-             return <div key={attr.key}></div>;
+          {fake.booking_code?
+          // <>
+          //  <ContactCardWrapper className="isoContactCard">
+          //   <div className="isoContactCardHead">
+          //   <div className="isoPersonImage">
+          //   <img alt="#" src={fake.profile_picture} /> 
+          //   </div>
+          //   <h1 className="isoPersonName">Hi, {fake.guest_name}!</h1>
+          //   </div>
+          //   <div className="isoContactInfoWrapper">
+          //     <p><IntlMessages id="guestdetails.introduction" /></p>
+          //  {parsedData.map((attr, index) =>{
+          //    if(keys.includes(attr.key)){
+          //     return(
+          //       <div className="isoContactCardInfos" key={attr.key}>
+          //         <p className="isoInfoLabel" style={{ minWidth: "110px" }}>{`${title[index]}`}</p>
+          //         <p className="isoInfoDetails">{`${attr.value}`}{attr.key==="arrival_time" && attr.value===""? <> <TimePicker value={time} onChange={this.handleTime} onOpenChange={this.handleOpenChange} open={isOpen} format={'HH:mm'} addon={() => (
+          //           <Button size="small" type="primary" onClick={this.handleOpenChange}>
+          //             Ok
+          //           </Button> 
+          //         )}/> <IntlMessages id="forms.formsWithValidation.arrivalset" />  </>:"" }</p>
+          //       </div>
+          //     )
+          //    }
+          //    return <div key={attr.key}></div>;
              
-           })}
+          //  })}
            
-           </div>
-           </ContactCardWrapper>
-           </>
+          //  </div>
+          //  </ContactCardWrapper>
+          //  </>
+          <GuestInfo handleUpdate={this.handleUpdate} />
            : <div>nothing here, try HIJ12346</div>}
 
         </LayoutContent>
