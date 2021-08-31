@@ -28,7 +28,7 @@ const GuestInfo = ({ handleUpdate, guestData }) => {
           <h1 className="isoPersonName">Hi, {guestData.guest_name}!</h1>
         </div>
         <div className="isoContactInfoWrapper">
-          <p>
+          <p style={{marginBottom:"15px"}}>
             <IntlMessages id="guestdetails.introduction" />
           </p>
 

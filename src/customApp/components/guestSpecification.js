@@ -38,12 +38,13 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
         {title[attr.key]}
       </p>
       <p className="isoInfoDetails">
-        {`${attr.value}`}
+        {`${attr.value}  `}
         {/* the arrival time detail will be different from the rest of the guest details, it will have a time picker if arrival time is not specified beside it */}
         {attr.key === "arrival_time" ? (
           attr.value === "" ? (
             <>
               <TimePicker
+                style={{marginRight:"10px"}}
                 value={time}
                 onChange={handleTime}
                 onOpenChange={handleOpenChange}
@@ -58,8 +59,8 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
                     Ok
                   </Button>
                 )}
-              />{" "}
-              <IntlMessages id="forms.formsWithValidation.arrivalnotset" />
+              />
+               <IntlMessages id="forms.formsWithValidation.arrivalnotset" />
             </>
           ) : (
             <IntlMessages id="forms.formsWithValidation.arrivalset" />
