@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import IntlMessages from "../../components/utility/intlMessages";
 import { ContactCardWrapper } from "../../components/contacts/contactCard.style";
 import GuestSpecification from "./guestSpecification";
