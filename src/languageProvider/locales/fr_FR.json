@@ -660,5 +660,7 @@
   "guestdetails.checkin": "Date d'arrivée",
   "guestdetails.checkout": "Date de départ",
   "guestdetails.arrival": "Arrivée",
-  "forms.formsWithValidation.bookcodewarning":"Le code de réservation n'existe pas"
+  "forms.formsWithValidation.bookcodewarning":"Le code de réservation n'existe pas",
+  "forms.formsWithValidation.arrivalset":"(Votre hôte a été informé de votre arrivée)",
+  "forms.formsWithValidation.arrivalnotset":"(Veuillez régler votre heure d'arrivée)"
 }

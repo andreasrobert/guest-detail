@@ -603,5 +603,7 @@
   "guestdetails.checkin": "入住日期",
   "guestdetails.checkout": "离开日期",
   "guestdetails.arrival": "到达时间",
-  "forms.formsWithValidation.bookcodewarning":"预订代码不存在"
+  "forms.formsWithValidation.bookcodewarning":"预订代码不存在",
+  "forms.formsWithValidation.arrivalset":"(您的主人已被告知您的到来)",
+  "forms.formsWithValidation.arrivalnotset":"(请设置您的到达时间)"
 }

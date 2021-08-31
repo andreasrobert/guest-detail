@@ -651,5 +651,7 @@
   "guestdetails.checkin": "Data di arrivo",
   "guestdetails.checkout": "Data di partenza",
   "guestdetails.arrival": "Orario di arrivo",
-  "forms.formsWithValidation.bookcodewarning":"Il codice di prenotazione non esiste"
+  "forms.formsWithValidation.bookcodewarning":"Il codice di prenotazione non esiste",
+  "forms.formsWithValidation.arrivalset":"(Il tuo host è stato informato del tuo arrivo)",
+  "forms.formsWithValidation.arrivalnotset":"(Si prega di impostare l'orario di arrivo)"
 }

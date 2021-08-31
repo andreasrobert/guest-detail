@@ -620,5 +620,7 @@
   "guestdetails.checkin": "تحقق في",
   "guestdetails.checkout": "الدفع",
   "guestdetails.arrival": "وصول",
-  "forms.formsWithValidation.bookcodewarning":"رمز الحجز غير موجود"
+  "forms.formsWithValidation.bookcodewarning":"رمز الحجز غير موجود",
+  "forms.formsWithValidation.arrivalset":"(تم إبلاغ مضيفك عن قوتك)",
+  "forms.formsWithValidation.arrivalnotset":"(يرجى تحديد وقت وصولك)"
 }

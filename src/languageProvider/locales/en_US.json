@@ -646,5 +646,8 @@
   "guestdetails.checkin": "Check in date",
   "guestdetails.checkout": "Check out date",
   "guestdetails.arrival": "Arrival time",
-  "forms.formsWithValidation.bookcodewarning":"Booking code doesn't exist"
+  "forms.formsWithValidation.bookcodewarning":"Booking code doesn't exist",
+  "forms.formsWithValidation.arrivalset":"(Your host has been informed about your arrival)",
+  "forms.formsWithValidation.arrivalnotset":"(Please set your arrival time)"
+  
 }

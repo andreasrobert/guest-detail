@@ -661,5 +661,7 @@
   "guestdetails.checkin": "Registrarse",
   "guestdetails.checkout": "Verificar",
   "guestdetails.arrival": "Llegada",
-  "forms.formsWithValidation.bookcodewarning":"El código de reserva no existe"
+  "forms.formsWithValidation.bookcodewarning":"El código de reserva no existe",
+  "forms.formsWithValidation.arrivalset":"(Su anfitrión ha sido informado sobre su llegada)",
+  "forms.formsWithValidation.arrivalnotset":"(Por favor, establezca su hora de llegada)"
 }
