@@ -76,8 +76,9 @@ class GuestPortal extends Component {
           style={{ minHeight: "80vh", width: "100%", marginTop: "-40px" }}
         >
           <LayoutContent>
-            <h2>
-              <IntlMessages id="guestdetails.askbookingcode" />
+            <div style={{display:"flex", justifyContent:'center'}}>
+            <h2 style={{margin:"3px 5px 0px 0px", }}>
+              <IntlMessages id="guestdetails.askbookingcode" /> :
             </h2>
 
             <Form onSubmit={this.handleSubmit}>
@@ -102,7 +103,7 @@ class GuestPortal extends Component {
                 />
               </FormItem>
             </Form>
-
+            </div>
             {/* if guestData is null return nothing */}
             {guestData.booking_code ? (
               <GuestInfo
