@@ -4,15 +4,18 @@ const actions = {
     GET_ALL_GUEST:'GET_ALL_GUEST',
     UPDATE_GUEST: 'UPDATE_GUEST',
     SET_STATUS: 'SET_STATUS',
+    SET_MISSING: 'SET_MISSING',
 
-getGuest:(bookingCode) => ({
+getGuest:(bookingCode,x) => ({
     type: actions.GET_GUEST,
-    payload: bookingCode
+    payload: bookingCode,
+    addon: x
 }),
 
-setGuest:(data)=>({
+setGuest:(data,x)=>({
     type: actions.SET_GUEST,
-    payload: data
+    payload: data,
+    addon:x
 }),
 
 getAllGuest:()=>({
@@ -27,6 +30,10 @@ updateGuest:(updatedData)=>({
 setStatus:(newStatus)=>({
     type: actions.SET_STATUS,
     payload: newStatus
+}),
+
+setMissing:()=>({
+    type: actions.SET_MISSING
 })
  
 }

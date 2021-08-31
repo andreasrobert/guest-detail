@@ -21,12 +21,12 @@ const updateDetails = async(payload) =>{
         .catch(error => error)
 }
 
-function* requestDetails({payload}) {
+function* requestDetails({payload, x}) {
     try{
         yield put(actions.setStatus("validating"))
         const details = yield call(onRequestDetails, payload)
         if(details){
-            yield put(actions.setGuest(details))
+            yield put(actions.setGuest(details, x))
             yield put(actions.setStatus(undefined))
 
         } else {
@@ -41,6 +41,7 @@ function* requestDetails({payload}) {
 function* setDetail({payload}) {
     try{
         const update = yield call( updateDetails,payload)
+        yield put(actions.getGuest(payload.bookingCode, payload.updatedData))
     } catch (error) {
         console.log(error)
     }
