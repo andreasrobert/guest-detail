@@ -19,9 +19,7 @@ class GuestPortal extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.handleOpenChange = this.handleOpenChange.bind(this);
-    this.handleTime = this.handleTime.bind(this);
-
+    
     this.state = {
       input: "",
       time: null,
@@ -30,14 +28,7 @@ class GuestPortal extends Component {
     };
   }
 
-  async handleOpenChange() {
-    const { isOpen, timeInput } = this.state;
-    await this.setState({ isOpen: !isOpen });
-    if (isOpen && timeInput !== "") {
-      this.handleUpdate();
-    }
-  }
-
+  //handle the user 'booking code' input
   async handleChange(event) {
     event.preventDefault();
     await this.setState({
@@ -50,13 +41,7 @@ class GuestPortal extends Component {
     }
   }
 
-  handleTime(time, timeString) {
-    this.setState({
-      time: time,
-      timeInput: timeString,
-    });
-  }
-
+  //handle the 'booking code' input submit
   handleSubmit(event) {
     event.preventDefault();
     const { input } = this.state;
@@ -68,6 +53,7 @@ class GuestPortal extends Component {
     this.props.getGuest(input);
   }
 
+  //update arrival time data
   handleUpdate(time) {
     this.props.updateGuest({
       bookingCode: this.props.guestData.booking_code,
@@ -77,7 +63,7 @@ class GuestPortal extends Component {
 
   render() {
     const { input } = this.state;
-    const { isError, guestData } = this.props;
+    const { isError, guestData } = this.props; //global state
 
     return (
       <LayoutWrapper>
@@ -93,7 +79,7 @@ class GuestPortal extends Component {
             <h2>
               <IntlMessages id="guestdetails.askbookingcode" />
             </h2>
-            
+
             <Form onSubmit={this.handleSubmit}>
               <FormItem
                 hasFeedback
@@ -117,13 +103,14 @@ class GuestPortal extends Component {
               </FormItem>
             </Form>
 
+            {/* if guestData is null return nothing */}
             {guestData.booking_code ? (
               <GuestInfo
                 handleUpdate={this.handleUpdate}
                 guestData={guestData}
               />
             ) : (
-              <div>nothing here, try HIJ12346</div>
+              <div></div>
             )}
           </LayoutContent>
         </LayoutContentWrapper>
@@ -131,13 +118,14 @@ class GuestPortal extends Component {
     );
   }
 }
+
+//connecting with the reducer file
 function mapStateToProps(state) {
   return {
     isError: state.guestDetails.isError,
     guestData: state.guestDetails.guestData,
   };
 }
-
 export default connect(
   mapStateToProps,
   { setStatus, getGuest, updateGuest }

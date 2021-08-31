@@ -4,13 +4,15 @@ import { ContactCardWrapper } from "../../components/contacts/contactCard.style"
 import GuestSpecification from "./guestSpecification";
 
 const GuestInfo = ({ handleUpdate, guestData }) => {
-  const keys = [
+  //list of the we'll want to see
+  const wanted = [
     "property_name",
     "check_in_date",
     "check_out_date",
     "arrival_time",
   ];
 
+  //convert the guestData from object to array
   const parsedData = Object.keys(guestData).map((key) => {
     const value = guestData[key];
     return { key, value };
@@ -29,8 +31,10 @@ const GuestInfo = ({ handleUpdate, guestData }) => {
           <p>
             <IntlMessages id="guestdetails.introduction" />
           </p>
+
           {parsedData.map((attr, index) => {
-            if (keys.includes(attr.key)) {
+              //if the attribute's key isn't in the wanted list return nothing
+            if (wanted.includes(attr.key)) {
               return (
                 <GuestSpecification
                   key={attr.key}

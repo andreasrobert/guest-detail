@@ -6,6 +6,8 @@ const initState = {
     isError: undefined
 };
 
+//using immerJS to handle immutable state
+
 export default function reducer(state = initState, action) {
     switch(action.type){
         case actions.SET_GUEST:
@@ -13,32 +15,23 @@ export default function reducer(state = initState, action) {
                 if(action.payload.arrival_time){
                     draft.guestData = action.payload
                 }
-                else if(action.x){
+                else if(action.addon){
                     draft.guestData = action.payload
-                    draft.guestData["arrival_time"] = action.x
+                    draft.guestData["arrival_time"] = action.addon
                 }
                 else{
                     draft.guestData = action.payload
                     draft.guestData["arrival_time"] = ""
-                    console.log(action.x)
+                    console.log(action.addon)
                 }
             })
-            // return{
-            //     ...state,
-            //     guestData: action.payload
-            // }
-
+            
         case actions.SET_STATUS:
             return{
                 ...state,
                 isError: action.payload
             }
 
-        case actions.SET_MISSING:
-            return{
-
-            }
-        
         default:
             return state;
     }

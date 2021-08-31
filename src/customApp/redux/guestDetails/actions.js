@@ -6,16 +6,18 @@ const actions = {
     SET_STATUS: 'SET_STATUS',
     SET_MISSING: 'SET_MISSING',
 
-getGuest:(bookingCode,x) => ({
+// ? there is a bug in the api where if you update the arrival time, the key and value will disappear ? Sorry if i'm mistaken
+// the time parameter is given from the update function in saga.js while it has the data for the new updated arrival time to combat the problem  
+getGuest:(bookingCode,time) => ({
     type: actions.GET_GUEST,
     payload: bookingCode,
-    addon: x
+    addon: time
 }),
 
-setGuest:(data,x)=>({
+setGuest:(data,time)=>({
     type: actions.SET_GUEST,
     payload: data,
-    addon:x
+    addon:time
 }),
 
 getAllGuest:()=>({
@@ -27,14 +29,11 @@ updateGuest:(updatedData)=>({
     payload: updatedData
 }),
 
+//state for the input validation 
 setStatus:(newStatus)=>({
     type: actions.SET_STATUS,
     payload: newStatus
 }),
-
-setMissing:()=>({
-    type: actions.SET_MISSING
-})
  
 }
 

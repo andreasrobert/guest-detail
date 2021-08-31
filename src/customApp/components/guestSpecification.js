@@ -7,6 +7,7 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
   const [timeInput, setTimeInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  //functions to connect the title and the attibute's key
   const title = {
     booking_code: "Booking code",
     guest_name: "Name",
@@ -14,9 +15,10 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
     check_in_date: "Check in date",
     check_out_date: "Check out date",
     arrival_time: "Arrival time",
-    profile_picture:"Profile"
-  }
+    profile_picture: "Profile",
+  };
 
+  // handle the opening & closing of the time picker
   async function handleOpenChange() {
     await setIsOpen(!isOpen);
     if (isOpen && timeInput !== "") {
@@ -24,6 +26,7 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
     }
   }
 
+  //handle the value for the time picker
   function handleTime(time, timeString) {
     setTime(time);
     setTimeInput(timeString);
@@ -32,10 +35,11 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
   return (
     <div className="isoContactCardInfos">
       <p className="isoInfoLabel" style={{ minWidth: "110px" }}>
-          {title[attr.key]}
+        {title[attr.key]}
       </p>
       <p className="isoInfoDetails">
         {`${attr.value}`}
+        {/* the arrival time detail will be different from the rest of the guest details, it will have a time picker if arrival time is not specified beside it */}
         {attr.key === "arrival_time" ? (
           attr.value === "" ? (
             <>
