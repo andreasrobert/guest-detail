@@ -40,8 +40,13 @@ function* setDetail({payload}) {
 }
 
 const updateDetails = async(payload) =>{
+    console.log(payload)
     await fetch(`https://bv-online-assessment.herokuapp.com/api/bookings/${payload.bookingCode}/update-eta`,{
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
         body: JSON.stringify({arrival_time: payload.updatedData})
         })
         .then(res => res.json())
