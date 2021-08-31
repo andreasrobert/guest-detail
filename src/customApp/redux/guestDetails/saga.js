@@ -2,12 +2,12 @@ import { all, takeEvery, put, call } from 'redux-saga/effects';
 import actions from './actions';
 
 //functions to fetch the api and update the data, and when finished get the new updated data
-function* requestDetails({payload, x}) {
+function* requestDetails({payload}) {
     try{
         yield put(actions.setStatus("validating"))
         const details = yield call(onRequestDetails, payload)
         if(details){
-            yield put(actions.setGuest(details, x))
+            yield put(actions.setGuest(details))
             yield put(actions.setStatus(undefined))
 
         } else {
@@ -33,7 +33,7 @@ const onRequestDetails = async (bookingCode) =>{
 function* setDetail({payload}) {
     try{
         const update = yield call( updateDetails,payload)
-        yield put(actions.getGuest(payload.bookingCode, payload.updatedData))
+        yield put(actions.getGuest(payload.bookingCode))
     } catch (error) {
         console.log(error)
     }

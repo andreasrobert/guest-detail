@@ -7,16 +7,14 @@ const actions = {
     SET_MISSING: 'SET_MISSING',
 
 
-getGuest:(bookingCode,time) => ({
+getGuest:(bookingCode) => ({
     type: actions.GET_GUEST,
     payload: bookingCode,
-    addon: time
 }),
 
-setGuest:(data,time)=>({
+setGuest:(data)=>({
     type: actions.SET_GUEST,
     payload: data,
-    addon:time
 }),
 
 getAllGuest:()=>({
