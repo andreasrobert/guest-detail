@@ -63,12 +63,13 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
                <IntlMessages id="forms.formsWithValidation.arrivalnotset" />
             </>
           ) : (
-            <IntlMessages id="forms.formsWithValidation.arrivalset" />
+            <IntlMessages id="forms.formsWithValidation.arrivalset" /> 
           )
         ) : (
           ""
         )}
       </p>
+
     </div>
   );
 };

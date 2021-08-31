@@ -75,7 +75,7 @@ class GuestPortal extends Component {
         <LayoutContentWrapper
           style={{ minHeight: "80vh", width: "100%", marginTop: "-40px" }}
         >
-          <LayoutContent>
+          <LayoutContent style={{display:"flex", flexDirection:"column",alignItems:'center'}}>
             <div style={{display:"flex", justifyContent:'center'}}>
             <h2 style={{margin:"3px 5px 0px 0px", }}>
               <IntlMessages id="guestdetails.askbookingcode" /> :
