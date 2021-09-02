@@ -9,12 +9,12 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
 
   //functions to connect the title and the attibute's key
   const title = {
-    booking_code: "Booking code",
+    booking_code: "booking code",
     guest_name: "Name",
-    property_name: "Property name",
-    check_in_date: "Check in date",
-    check_out_date: "Check out date",
-    arrival_time: "Arrival time",
+    property_name: "guestdetails.property",
+    check_in_date: "guestdetails.checkin",
+    check_out_date: "guestdetails.checkout",
+    arrival_time: "guestdetails.arrival",
     profile_picture: "Profile",
   };
 
@@ -35,7 +35,7 @@ const GuestSpecification = ({ attr, index, handleUpdate }) => {
   return (
     <div className="isoContactCardInfos">
       <p className="isoInfoLabel" style={{ minWidth: "110px" }}>
-        {title[attr.key]}
+        <IntlMessages id={title[attr.key]} />
       </p>
       <p className="isoInfoDetails">
         {`${attr.value}  `}
